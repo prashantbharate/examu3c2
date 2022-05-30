@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+
+  <body>
+    <div id="order-form">
+      <!--Add your form html element here-->
+      <!--In form, give #name,#number and #address as HTML id's to relevant input elements -->
+      <!-- confirm button with id "confirm" -->
+      <label for="">name</label><input type="text" name="name" id="name" placeholder="enter the name" required>&nbsp;&nbsp;
+      <label for="">number</label><input type="number" name="" id="number" placeholder="enter the Number" required>&nbsp;&nbsp;
+      <label for="">address</label><input type="text" name="" id="address" placeholder="enter the addres" required>&nbsp;&nbsp;
+      <button id="confirm" onclick="showalert()">Confirm</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  
+  function showalert()
+  {
+          setTimeout(function()
+          {
+            alert("Your order is accepted")
+          },0)
+          setTimeout(function()
+          {
+            alert("Your order is being Prepared")
+          },3000)
+          setTimeout(function()
+          {
+            alert("Your order is being packed ")
+          },8000)
+          setTimeout(function()
+          {
+            alert("Your order is out for delivery")
+          },10000)
+          setTimeout(function()
+          {
+            alert(" Order delivered")
+          },12000)
+  }
+
+
+
+</script>

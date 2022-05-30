@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style/bucket.css">
+  </head>
+
+
+  <body onload="getbdata()">
+    <div id="total-div">
+      <h3 id="total_amount">
+           <!--Show bucket total here, do not add anything only Total value. Not even "Total - 1200Rs" but like this "1200" -->
+      </h3>
+    </div>
+    <div id="bucket">
+      <!--Show all coffee added to bucket here-->
+      <!-- add an remove button to each coffee so that you can remove that item from bucket, give the button HTML id as 'remove_coffee' -->
+    </div>
+
+    <!-- checkout link  -->
+   <button id="confirm_checkout" onclick="pagenext()">Checkout</button>
+
+    
+
+  </body>
+</html>
+
+  <script>
+    let getb=JSON.parse(localStorage.getItem("coffee")) || []
+    function getbdata()
+    {
+      
+     
+
+       let total=getb.reduce(function(sum,el,i,arr)
+       {
+         return sum+el.price
+       },0)
+
+      let tp= document.getElementById("total_amount")
+      tp.innerText=total
+       
+      getb.map(function(el,i)
+      {
+
+        let div=document.createElement("div")
+
+        let img=document.createElement("img")
+        img.setAttribute("id","img2")
+        img.src=el.image
+
+        let p=document.createElement("p")
+        p.innerText=el.price
+        
+        let p1=document.createElement("p")
+        p1.innerText=el.title
+
+        let button=document.createElement("button")
+        button.setAttribute("id","remove_coffee")
+        button.innerText="Remove"
+        button.addEventListener("click",function()
+        {
+          removedata(i)
+        })
+
+      
+
+        div.append(img,p1,p,button)
+        document.querySelector("#bucket").append(div)
+
+      });
+
+    
+    }
+
+function removedata(el,i)
+    {
+      getb.splice(i,1)
+      localStorage.setItem("coffee",JSON.stringify(getb))
+      window.location.reload()
+    }
+
+function pagenext()
+{
+  window.location.href="checkout.html"
+}
+   
+  </script>
